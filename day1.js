@@ -13,7 +13,7 @@ const input = getInput(1);
 function part1(expenses = input, target = TARGET_NUMBER) {
     const workingSet = new Set();
     let product;
-    for (let expense of expenses){
+    for (let expense of expenses) {
         const complement = target - expense;
         if (workingSet.has(complement)) {
             product = expense * complement;
@@ -26,9 +26,9 @@ function part1(expenses = input, target = TARGET_NUMBER) {
 
 function part2(expenses = input) {
     let product;
-    for (let expense of expenses){
+    for (let [idx, expense] of expenses.entries()) {
         const complement = TARGET_NUMBER - expense;
-        const result = part1(expenses, complement);
+        const result = part1([...expenses.slice(0, idx), ...expenses.slice(idx+1)], complement);
         if (result) {
             product = result * expense;
             break;
@@ -36,6 +36,7 @@ function part2(expenses = input) {
     }
     return product;
 }
+
 
 formatAnswer(part1(), part2());
 
