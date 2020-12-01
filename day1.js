@@ -1,6 +1,7 @@
 /**
  * 
- * Advent of Code 2020 Day 1
+ * Advent of Code 2020
+ * Day 1: Report Repair
  * https://adventofcode.com/2020/day/1
  * 
  */
