@@ -1,12 +1,13 @@
 import fs from 'fs';
 
 const INPUT_FILE_MAP = {
-    1:  'puzzleInputs/day1.txt'
+    1:  'puzzleInputs/day1.txt',
+    2:  'puzzleInputs/day2.txt'
 }
 
 const getInput = function(day) {
     try {
-        return fs.readFileSync(INPUT_FILE_MAP[day], 'utf8').split('\n').map(x => Number(x));
+        return fs.readFileSync(INPUT_FILE_MAP[day], 'utf8').split('\n');
     } catch (e) {
         throw e;
     }
