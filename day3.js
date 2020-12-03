@@ -1,7 +1,7 @@
 /**
  * 
  * Advent of Code 2020
- * Day 3:
+ * Day 3: Toboggan Trajectory
  * https://adventofcode.com/2020/day/3
  * 
  * Solution for input: 
