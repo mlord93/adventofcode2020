@@ -2,7 +2,8 @@ import fs from 'fs';
 
 const INPUT_FILE_MAP = {
     1:  'puzzleInputs/day1.txt',
-    2:  'puzzleInputs/day2.txt'
+    2:  'puzzleInputs/day2.txt',
+    3:  'puzzleInputs/day3.txt'
 }
 
 const getInput = function(day) {
