@@ -3,7 +3,7 @@ import fs from 'fs';
 const getInput = function(day) {
     try {
         const filePathString = `puzzleInputs/day${day}.txt`
-        return fs.readFileSync(filePathString, 'utf8').split('\n');
+        return fs.readFileSync(filePathString, 'utf8').split('\n\n');
     } catch (e) {
         throw e;
     }
