@@ -11,20 +11,20 @@
  */
 
 import { getInput, formatAnswer } from './utils.js';
-const input = getInput(3);
+let input = getInput(3);
 
-function part1(right=3, down=1, i=input) {
-    let count = 0;
+function part1(right=3, down=1) {
+    let treeCount = 0;
     let position = 0;
-    for (let row=0;row<i.length;row+=down) {
-        if (i[row][(position % i[row].length)] == '#') count++;
+    for (let row=0;row<input.length;row+=down) {
+        if (input[row][(position % input[row].length)] == '#') treeCount++;
         position+=right;
     }
-    return count;
+    return treeCount;
 }
 
 function part2() {
-    return part1(1,1) * part1(3,1) * part1(5,1) * part1(7,1) * part1(1,2);
+    return part1(1) * part1(3) * part1(5) * part1(7) * part1(1,2);
 }
 
 formatAnswer(part1(), part2());

@@ -13,23 +13,19 @@
 import { getInput, formatAnswer } from './utils.js';
 const input = getInput(2);
 
-function part1(passwords = input) {
-    let validCount = 0;
-    for (let line of passwords) {
-        const { positions, policyChar, password } = formatInputLine(line);
+function part1() {
+    return input.reduce((a, c) => {
+        const { positions, policyChar, password } = formatInputLine(c);
         const numOccurances = (password.match(new RegExp(policyChar, 'g')) || []).length;
-        if (numOccurances >= positions[0] && numOccurances <= positions[1]) validCount++;
-    }
-    return validCount;
+        return (numOccurances >= positions[0] && numOccurances <= positions[1]) ? a+1 : a;
+    }, 0);
 }
 
-function part2(passwords = input) {
-    let validCount = 0;
-    for (let line of passwords) {
-        const { positions, policyChar, password } = formatInputLine(line);
-        if ((password[positions[0] - 1] == policyChar) != (password[positions[1] - 1] == policyChar)) validCount++;
-    }
-    return validCount;
+function part2() {
+    return input.reduce((a,c) => {
+        const { positions, policyChar, password } = formatInputLine(c);
+        return ((password[positions[0] - 1] == policyChar) != (password[positions[1] - 1] == policyChar)) ? a+1 : a;
+    }, 0);
 }
 
 function formatInputLine(line) {

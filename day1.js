@@ -28,11 +28,11 @@ function part1(expenses = input, target = TARGET_NUMBER) {
     return product;
 }
 
-function part2(expenses = input) {
+function part2() {
     let product;
-    for (let [idx, expense] of expenses.entries()) {
+    for (let [idx, expense] of input.entries()) {
         const complement = TARGET_NUMBER - expense;
-        const result = part1([...expenses.slice(0, idx), ...expenses.slice(idx + 1)], complement);
+        const result = part1([...input.slice(0, idx), ...input.slice(idx + 1)], complement);
         if (result) {
             product = result * expense;
             break;
