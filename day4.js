@@ -15,7 +15,6 @@ const input = getInput(4);
 
 const list = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
 
-
 function part1() {
     return input.reduce((a, c) => {
         return (list.reduce((n, m) => {
@@ -45,7 +44,55 @@ function part2() {
     }, 0);
 }
 
-formatAnswer(part1(), part2());
+function validatePassportCustom(passport) {
+
+}
+
+// function validatePassportFieldsExist(passport) {
+//     return (list.reduce((n, m) => {
+//         return c.toString().includes(m) ? n + 1 : n
+//     }, 0) == 7) ? a + 1 : a;
+// }
+
+function countValidPassports(validator) {
+    return input.reduce((a, c) => {
+        const passport = c.replace(/\s/g, ' ').split(' ').reduce((a2,c2) => {
+            a2[c2.split(':')[0]] = c2.split(':')[1];
+            return a2;
+        }, {});
+        return validator(passport) ? a + 1 : a;
+    }, 0);
+}
+
+function part1Rewrite() {
+    return countValidPassports((passport) => list.every((key) => key in passport));
+}
+
+function part2Rewrite() {
+    return countValidPassports((passport) => {
+
+            const inclusiveBetween = function(value, low, high) { return (value >= low && value <=high) };
+            
+            if (!('byr' in passport && inclusiveBetween(Number(passport['byr']), 1920, 2002))) return false;
+            if (!('iyr' in passport && inclusiveBetween(Number(passport['iyr']), 2010, 2020))) return false;
+            if (!('eyr' in passport && inclusiveBetween(Number(passport['eyr']), 2020, 2030))) return false;
+            // if ('hgt' in passport) {
+            //     console.log(passport['hgt']);
+            //     const [full, value, measurement] = passport['hgt'].match(/(\d+)(cm|in)/g);
+            //     console.log(`v: ${value} m: ${measurement}`);
+            // }
+            if (!('ecl' in passport && ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(passport['ecl']))) return false;
+            if (!('pid' in passport && passport['pid'].length == 9 )) return false;
+
+            return true;
+
+    });
+}
+
+// console.log(part2Rewrite());
+
+console.log('hello world');
+//formatAnswer(part1(), part2());
 
 export {
     part1,
