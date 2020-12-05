@@ -15,16 +15,6 @@ const input = getInput(4);
 
 const keyList = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
 
-function countValidPassports(validator) {
-    return input.reduce((a, c) => {
-        const passport = c.replace(/\s/g, ' ').split(' ').reduce((a2, c2) => {
-            a2[c2.split(':')[0]] = c2.split(':')[1];
-            return a2;
-        }, {});
-        return validator(passport) ? a + 1 : a;
-    }, 0);
-}
-
 function part1() {
     return countValidPassports((passport) => keyList.every((key) => key in passport));
 }
@@ -46,6 +36,16 @@ function part2() {
 
         return true;
     });
+}
+
+function countValidPassports(validator) {
+    return input.reduce((a, c) => {
+        const passport = c.replace(/\s/g, ' ').split(' ').reduce((a2, c2) => {
+            a2[c2.split(':')[0]] = c2.split(':')[1];
+            return a2;
+        }, {});
+        return validator(passport) ? a + 1 : a;
+    }, 0);
 }
 
 formatAnswer(part1(), part2());
