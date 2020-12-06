@@ -1,12 +1,12 @@
 /**
  * 
  * Advent of Code 2020
- * Day 6:
+ * Day 6: Custom Customs
  * https://adventofcode.com/2020/day/
  * 
  * Solution for input: 
- * Part 1: 
- * Part 2: 
+ * Part 1: 6590
+ * Part 2: 3288
  * 
  */
 
