@@ -2,7 +2,7 @@
  * 
  * Advent of Code 2020
  * Day 4: Passport Processing
- * https://adventofcode.com/2020/day/
+ * https://adventofcode.com/2020/day/4
  * 
  * Solution for input: 
  * Part 1: 190

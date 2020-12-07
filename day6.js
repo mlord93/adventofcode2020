@@ -2,7 +2,7 @@
  * 
  * Advent of Code 2020
  * Day 6: Custom Customs
- * https://adventofcode.com/2020/day/
+ * https://adventofcode.com/2020/day/6
  * 
  * Solution for input: 
  * Part 1: 6590

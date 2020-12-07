@@ -2,7 +2,7 @@
  * 
  * Advent of Code 2020
  * Day 5: Binary Boarding
- * https://adventofcode.com/2020/day/
+ * https://adventofcode.com/2020/day/5
  * 
  * Solution for input: 
  * Part 1: 904
