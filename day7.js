@@ -11,6 +11,7 @@
  */
 
 import { getInput, formatAnswer } from './utils.js';
+import _ from 'lodash';
 
 const input = getInput(7);
 let visited = [];
@@ -29,26 +30,17 @@ function part1() {
     });
 
     getOuterBags(innerMap, 'shiny gold');
-    return visited.length-1;
+    return visited.length - 1;
 }
 
 function part2() {
     let outerMap = {};
     input.forEach((line) => {
-        const match = line.match(/(?<outer>.+) bags contain (?<inner>.+)+/);
-        const outer = match.groups.outer;
-        if (match.groups.inner !== 'no other bags.') {
-            outerMap[outer] = match.groups.inner.split(', ').reduce((a,c) => {
-                const { num, color } = c.match(/(?<num>\d) (?<color>.+) bags?/).groups;
-                a.push({num : Number(num), color});
-                return a;
-            }, []);
-        } else {
-            outerMap[outer] = [];
-        }
+        const { inner, outer}  = line.match(/(?<outer>.+) bags contain (?<inner>.+)+/).groups;
+        outerMap[outer] = inner == 'no other bags.' ? [] : inner.split(', ').map((x) => x.match(/(?<num>\d) (?<color>.+) bags?/).groups).map((y) => ({ num: Number(y.num), color: y.color}));
     });
 
-    return getInnerBags(outerMap, {num: 1, color: 'shiny gold'}) -1 ;
+    return getInnerBags(outerMap, { num: 1, color: 'shiny gold' }) - 1;
 }
 
 function getOuterBags(innerMap, current) {
@@ -62,7 +54,7 @@ function getOuterBags(innerMap, current) {
 
 function getInnerBags(outerMap, current) {
     if (outerMap[current.color].length == 0) return current.num;
-    return current.num + current.num * outerMap[current.color].reduce((a,c) => {
+    return current.num + current.num * outerMap[current.color].reduce((a, c) => {
         a += getInnerBags(outerMap, c);
         return a;
     }, 0);
