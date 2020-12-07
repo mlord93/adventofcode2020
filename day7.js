@@ -11,7 +11,6 @@
  */
 
 import { getInput, formatAnswer } from './utils.js';
-import _ from 'lodash';
 
 const input = getInput(7);
 let visited = [];
