@@ -1,12 +1,12 @@
 /**
  * 
  * Advent of Code 2020
- * Day 8:
- * https://adventofcode.com/2020/day/
+ * Day 8: Handheld Halting
+ * https://adventofcode.com/2020/day/8
  * 
  * Solution for input: 
  * Part 1: 2051
- * Part 2: 
+ * Part 2: 2304
  * 
  */
 
