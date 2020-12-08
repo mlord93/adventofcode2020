@@ -60,7 +60,6 @@ function part2() {
     return "FATAL ERROR";
 }
 
-//console.log(part1());
 formatAnswer(part1(), part2());
 
 export {
