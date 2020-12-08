@@ -36,10 +36,9 @@ function part1() {
 function part2() {
     let outerMap = {};
     input.forEach((line) => {
-        const { inner, outer}  = line.match(/(?<outer>.+) bags contain (?<inner>.+)+/).groups;
+        const { inner, outer }  = line.match(/(?<outer>.+) bags contain (?<inner>.+)+/).groups;
         outerMap[outer] = inner == 'no other bags.' ? [] : inner.split(', ').map((x) => x.match(/(?<num>\d) (?<color>.+) bags?/).groups).map((y) => ({ num: Number(y.num), color: y.color}));
     });
-
     return getInnerBags(outerMap, { num: 1, color: 'shiny gold' }) - 1;
 }
 
