@@ -41,7 +41,7 @@ function part2() {
             sum = input.slice(headIndex, tailIndex).reduce((a, c) => a + c);
             tailIndex++;
         }
-        if (sum == target) Math.min(...input.slice(headIndex, tailIndex)) + Math.max(...input.slice(headIndex, tailIndex));
+        if (sum == target) return Math.min(...input.slice(headIndex, tailIndex)) + Math.max(...input.slice(headIndex, tailIndex));
         headIndex++;
     }
 }
