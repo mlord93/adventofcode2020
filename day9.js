@@ -14,7 +14,7 @@ import { getInput, formatAnswer } from './utils.js';
 const input = getInput(9).map((x) => Number(x));
 
 function part1() {
-    let current = 25; 
+    let current = 25;
     while (current < input.length) {
         if (!containsSumPair(input.slice(current - 25, current), input[current])) break;
         current++;
@@ -22,10 +22,10 @@ function part1() {
     return input[current];
 }
 
-function containsSumPair(list, toMatch) {
+function containsSumPair(list, target) {
     for (let x = 0; x < list.length; x++) {
         for (let y = 0; y < list.length; y++) {
-            if (x !== y && list[x] + list[y] == toMatch) return true;
+            if (x !== y && list[x] + list[y] == target) return true;
         }
     }
     return false;
@@ -37,8 +37,8 @@ function part2() {
     while (headIndex < input.length) {
         let sum = 0;
         let tailIndex = headIndex + 1;
-        while(sum < target && tailIndex < input.length) {
-            sum = input.slice(headIndex, tailIndex).reduce((a,c) => a + c);
+        while (sum < target && tailIndex < input.length) {
+            sum = input.slice(headIndex, tailIndex).reduce((a, c) => a + c);
             tailIndex++;
         }
         if (sum == target) Math.min(...input.slice(headIndex, tailIndex)) + Math.max(...input.slice(headIndex, tailIndex));
